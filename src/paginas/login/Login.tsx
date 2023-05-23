@@ -1,8 +1,8 @@
-import {Link, useHistory} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import React , {useState,useEffect, ChangeEvent} from "react";
 import UserLogin from "../../models/UserLogin";
 import useLocalStorage from "react-use-localstorage";
-import { api } from "../../services/Service";
+import { login } from "../../services/Service";
 import { Grid, Box, Typography, TextField, Button } from "@material-ui/core";
 import "./Login.css";
 
@@ -10,7 +10,7 @@ import "./Login.css";
 function Login() {
       
 
-     let history = useHistory(); 
+     let history = useNavigate(); 
      const [token , setToken]= useLocalStorage('token')  
      const [ userLogin, setUserLogin] = useState<UserLogin>(
         {
@@ -34,12 +34,14 @@ function Login() {
          }
 
         },[token])
+
+
         async function onSubmit(e: ChangeEvent<HTMLFormElement>){
            e.preventDefault();
 
           try{
-            const resposta = await api.post(`/usuarios/logar`,userLogin)
-            setToken(resposta.data.token)
+        await login (`/usuarios/logar`,userLogin, setToken)
+         
 
             alert("Usuario logado com sucesso!");
           }catch(error){
