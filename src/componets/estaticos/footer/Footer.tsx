@@ -14,7 +14,7 @@ function Footer() {
                         <Box paddingTop={1} display="flex" alignItems="center" justifyContent="center">
                             <Typography variant="h5" align="center" gutterBottom className='textos'>Siga-nos nas redes sociais </Typography>
                         </Box>
-                        <Box display="flex" alignItems="center" justifyContent="center">
+                        <Box  display="flex" alignItems="center" justifyContent="center">
                             <a href="https://github.com/nascimentojon" target="_blank" rel="noopener noreferrer">
                                 <GitHubIcon className="redes"/>
                             </a>

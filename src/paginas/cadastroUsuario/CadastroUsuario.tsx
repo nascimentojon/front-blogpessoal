@@ -1,7 +1,7 @@
 import React,{useState, useEffect, ChangeEvent} from "react";
 import {useNavigate} from "react-router-dom";
 import User from "../../models/User";
-import { cadastroUsuario } from "../../services/Service";
+import { cadastrarUsuario } from "../../services/Service";
 import { Grid, Box, Typography, Button, TextField } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import "./CadastroUsuario.css";
@@ -48,7 +48,7 @@ function CadastroUsuario() {
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         if(confirmarSenha == user.senha){
-        cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
+        cadastrarUsuario(`/usuarios/cadastrar`, user, setUserResult)
         alert('Usuario cadastrado com sucesso')
         }else{
             alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
@@ -58,7 +58,7 @@ function CadastroUsuario() {
     return (
         <Grid container direction="row" justifyContent="center" alignItems="center">
 
-            <Grid item xs={6} className="imagem2"></Grid>
+            <Grid item xs={6} className="imagem2"> <img ></img></Grid>
             <Grid item xs={6} alignItems="center">
                 <Box paddingX={10}>
                     <form onSubmit={onSubmit}>

@@ -1,6 +1,6 @@
 .imagem2{
     
-    background-image: url(https://i.impur.com/d5bMdDJ.jpg);
+    background-image: url(https://i.impur.com/d5bMdDJ.jpg) !important;
     background-repeat: no-repeat; 
     width: 100vh;
      min-height: 100vh;
