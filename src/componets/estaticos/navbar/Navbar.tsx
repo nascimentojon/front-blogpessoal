@@ -4,8 +4,9 @@ import {Box} from '@mui/material';
 import { Link } from 'react-router-dom';
 import {useNavigate } from 'react-router-dom'
 import useLocalStorage from 'react-use-localstorage';
-
 import './Navbar.css'
+
+
 function Navbar() {
     const [token, setToken] = useLocalStorage('token');
     let navigate = useNavigate();

@@ -30,7 +30,7 @@ function Login() {
 
         useEffect(()=>{
          if(token != ""){
-            history.push("/home")
+            Navigate.push("/home")
          }
 
         },[token])
@@ -73,6 +73,7 @@ function Login() {
                 </Box>
             </Grid>
             <Grid xs={6}className="imagem">
+            <img src="https://pixabay.com/pt/illustrations/pikachu-oculos-de-sol-personagem-7917962.png" alt="" width="500px" height="500px" />
              
             </Grid>
         </Grid>
