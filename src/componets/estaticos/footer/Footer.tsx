@@ -1,43 +1,45 @@
-import React from 'react';
+import { Box, Grid, Typography } from '@mui/material'
+import React from 'react'
+import './Footer.css'
 import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import { Typography, Grid } from '@material-ui/core';
-import { Box } from '@mui/material';
-import "./Footer.css";
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
+
 
 function Footer() {
-    return (
-        <>
-            <Grid container direction="row" justifyContent="center" alignItems="center">
-                <Grid alignItems="center" item xs={12}>
-                    <Box className='box1'>
-                        <Box paddingTop={1} display="flex" alignItems="center" justifyContent="center">
-                            <Typography variant="h5" align="center" gutterBottom className='textos'>Siga-nos nas redes sociais </Typography>
-                        </Box>
-                        <Box  display="flex" alignItems="center" justifyContent="center">
-                            <a href="https://github.com/nascimentojon" target="_blank" rel="noopener noreferrer">
-                                <GitHubIcon className="redes"/>
-                            </a>
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
 
-                            <a href="https://www.linkedin.com/in/jonatas-nascimento-3277a818a/" target="_blank" rel="noopener noreferrer">
-                                <LinkedInIcon className="redes" />
-                            </a>
-                        </Box>
-                    </Box>
-                    <Box className='box2'>
-                        <Box paddingTop={1}>
-
-                        </Box>
-                        <Box>
-                            <a target="_blank" href="https://brasil.generation.org" rel="noopener noreferrer">
-
-                            </a>
-                        </Box>
-                    </Box>
-                </Grid>
-            </Grid>
-        </>
-    )
+  // if ternario
+  return (
+    <footer className='footer'>
+      <Grid container py={4} alignItems={'center'}>
+        <Grid item xs={4} display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
+          <Typography variant='h6' align='center'>Blog da turma 63 - Feito por: Thiago Faccipieri - 2023</Typography>
+          <Box display={'flex'}>
+            <Typography>Feito com:</Typography>
+            <KeyboardArrowLeftIcon />
+            <Typography color={'lightgrey'} >React / MUI</Typography>
+            <KeyboardArrowRightIcon />
+          </Box>
+        </Grid>
+        <Grid item xs={4} display={'flex'} justifyContent={'center'}>
+          {/* controlando o que aparece em tela ou não, de acordo com o token da pessoa, com um if ternário */}
+          {token !== '' ? <Box display={'flex'} gap={2} alignItems={'center'} className='iconesFooter'>
+            <GitHubIcon fontSize='inherit' className='iconeInd' />
+            <LinkedInIcon fontSize='inherit' className='iconeInd' />
+          </Box> : <>você não está logado ainda</>}
+        </Grid>
+        <Grid item xs={4} display={'flex'} justifyContent={'center'}>
+          <Typography variant='h5'>Em parceria com: Generation Brasil</Typography>
+        </Grid>
+      </Grid>
+    </footer>
+  )
 }
 
-export default Footer;
+export default Footer
